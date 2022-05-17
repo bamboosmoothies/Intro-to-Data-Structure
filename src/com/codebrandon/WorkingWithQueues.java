@@ -38,8 +38,10 @@ public class WorkingWithQueues {
         System.out.println(supermarket.size());
         System.out.println(supermarket.peek());
         System.out.println(supermarket.poll());
+        
+ 
+        
+       
     }
-    
     static record Person(String name, int age){}
-    
 }
