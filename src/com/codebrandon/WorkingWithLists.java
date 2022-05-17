@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author School
  */
-public class WorkingWithList {
+public class WorkingWithLists {
 
     /**
      * @param args the command line arguments
