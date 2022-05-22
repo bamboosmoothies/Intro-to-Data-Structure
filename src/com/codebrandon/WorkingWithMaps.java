@@ -6,6 +6,7 @@ package com.codebrandon;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  *
@@ -17,6 +18,15 @@ public class WorkingWithMaps {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Map<Person, Diamond> map = new HashMap<>();
+        map.put(new Person("Jamila"), new Diamond("African Diamond"));
+        
+        System.out.println("");
+        System.out.println(map.get(new Person("Jamila")));
+
+        }
+    
+    private static void map() {    
         /**
          * A map cannot contain duplicate keys.
          * Each key can map to at most one value.
@@ -34,7 +44,7 @@ public class WorkingWithMaps {
         System.out.println(map.entrySet());
         //Loop
         map.entrySet().forEach(System.out::println);
-        
+
         //loop 2
         map.forEach((key, person) -> {
             System.out.println(key + " - " + person);
@@ -44,6 +54,43 @@ public class WorkingWithMaps {
 
     }
     
-    record Person(String name){}
+//    record Person(String name){}
+    static class Person {
+        String name;
+
+        public Person(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "Person{" + "name=" + name + '}';
+        }      
+
+        @Override
+        public int hashCode() {
+            int hash = 7;
+            hash = 13 * hash + Objects.hashCode(this.name);
+            return hash;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) {
+                return true;
+            }
+            if (obj == null) {
+                return false;
+            }
+            if (getClass() != obj.getClass()) {
+                return false;
+            }
+            final Person other = (Person) obj;
+            return Objects.equals(this.name, other.name);
+        }
+
+
+    }
+    record Diamond(String name){}
     
 }
